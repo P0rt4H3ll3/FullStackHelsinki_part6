@@ -29,6 +29,9 @@ const reducer = (state = initialState, action) => {
       const newAnec = { ...aToChange, votes: aToChange.votes + 1 }
       return state.map((a) => (a.id !== id ? a : newAnec))
     }
+    case 'NEW_NOTE': {
+      return [...state, action.payload]
+    }
     default:
       return state
   }

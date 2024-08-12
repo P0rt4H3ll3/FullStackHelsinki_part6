@@ -13,13 +13,12 @@ const Anecdote = ({ anecdote, handleClick }) => {
     </div>
   )
 }
-const Anecdotes = () => {
+const AnecdoteList = () => {
   const dispatch = useDispatch()
   const anecdotes = useSelector((state) => state)
 
   return (
     <>
-      <h2>Anecdotes</h2>
       {anecdotes
         .sort((a, b) => b.votes - a.votes)
         .map((anecdote) => (
@@ -33,9 +32,12 @@ const Anecdotes = () => {
   )
 }
 
-Anecdote.prototype = {
-  anecdote: PropTypes.object.isRequired,
+Anecdote.propTypes = {
+  anecdote: PropTypes.shape({
+    content: PropTypes.string.isRequired,
+    votes: PropTypes.number.isRequired
+  }).isRequired,
   handleClick: PropTypes.func.isRequired
 }
 
-export default Anecdotes
+export default AnecdoteList

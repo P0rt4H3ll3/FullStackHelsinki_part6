@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { increaseVote } from '../reducers/anecdoteReducer'
+import PropTypes from 'prop-types'
 
 const Anecdote = ({ anecdote, handleClick }) => {
   return (
@@ -19,15 +20,22 @@ const Anecdotes = () => {
   return (
     <>
       <h2>Anecdotes</h2>
-      {anecdotes.map((anecdote) => (
-        <Anecdote
-          key={anecdote.id}
-          anecdote={anecdote}
-          handleClick={() => dispatch(increaseVote(anecdote.id))}
-        />
-      ))}
+      {anecdotes
+        .sort((a, b) => b.votes - a.votes)
+        .map((anecdote) => (
+          <Anecdote
+            key={anecdote.id}
+            anecdote={anecdote}
+            handleClick={() => dispatch(increaseVote(anecdote.id))}
+          />
+        ))}
     </>
   )
+}
+
+Anecdote.prototype = {
+  anecdote: PropTypes.object.isRequired,
+  handleClick: PropTypes.func.isRequired
 }
 
 export default Anecdotes

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { increaseVote } from '../reducers/anecdoteReducer'
+import { updateAnecdote } from '../reducers/anecdoteReducer'
 import { createNotification } from '../reducers/notificationReducer'
 import PropTypes from 'prop-types'
 
@@ -26,7 +26,7 @@ const AnecdoteList = () => {
     })
   })
   const vote = (anecdote) => {
-    dispatch(increaseVote(anecdote.id))
+    dispatch(updateAnecdote(anecdote))
     dispatch(createNotification(`you voted ${anecdote.content}`))
   }
   return (

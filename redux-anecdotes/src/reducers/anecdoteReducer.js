@@ -36,4 +36,15 @@ export const createAnecdote = (content) => {
     dispatch(appendAnecdote(newAnec))
   }
 }
+
+export const updateAnecdote = (anecdote) => {
+  return async (dispatch) => {
+    const updateAnec = await anecService.update(anecdote)
+    const allAnec = await anecService.getAll()
+    const updatedSetAll = allAnec.map((a) =>
+      a.id !== anecdote.id ? a : updateAnec
+    )
+    dispatch(setAnecdotes(updatedSetAll))
+  }
+}
 export default anecSlice.reducer

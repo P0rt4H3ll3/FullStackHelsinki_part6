@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { updateAnecdote } from '../reducers/anecdoteReducer'
-import { createNotification } from '../reducers/notificationReducer'
+import { setNotification } from '../reducers/notificationReducer'
 import PropTypes from 'prop-types'
 
 const Anecdote = ({ anecdote, handleClick }) => {
@@ -27,7 +27,7 @@ const AnecdoteList = () => {
   })
   const vote = (anecdote) => {
     dispatch(updateAnecdote(anecdote))
-    dispatch(createNotification(`you voted ${anecdote.content}`))
+    dispatch(setNotification(`you voted '${anecdote.content}'`, 10))
   }
   return (
     [...anecdotes] //sort directly modifies the original array, here the state managed by redux

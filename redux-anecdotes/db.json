@@ -39,6 +39,11 @@
       "id": "58d1",
       "content": "this is the second test",
       "votes": 0
+    },
+    {
+      "id": "6aa3",
+      "content": "this is new content",
+      "votes": 0
     }
   ]
 }

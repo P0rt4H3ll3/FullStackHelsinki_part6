@@ -26,17 +26,16 @@ const AnecdoteList = () => {
   })
 
   return (
-    <>
-      {anecdotes
-        .sort((a, b) => b.votes - a.votes)
-        .map((anecdote) => (
-          <Anecdote
-            key={anecdote.id}
-            anecdote={anecdote}
-            handleClick={() => dispatch(increaseVote(anecdote.id))}
-          />
-        ))}
-    </>
+    [...anecdotes] //sort directly modifies the original array, here the state managed by redux
+      // that would be against the principles of immutability in Redux
+      .sort((a, b) => b.votes - a.votes)
+      .map((anecdote) => (
+        <Anecdote
+          key={anecdote.id}
+          anecdote={anecdote}
+          handleClick={() => dispatch(increaseVote(anecdote.id))}
+        />
+      ))
   )
 }
 

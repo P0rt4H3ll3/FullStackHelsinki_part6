@@ -7,10 +7,7 @@ const Notification = () => {
     }
     return notifications
   })
-  console.log(
-    'this is in Component Notification, the useSelector notification:',
-    notification
-  )
+
   const style = {
     border: 'solid',
     padding: 10,

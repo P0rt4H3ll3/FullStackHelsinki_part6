@@ -10,7 +10,9 @@ const NewAnacdotes = () => {
     const content = event.target.anecdote.value
     event.target.anecdote.value = ''
     dispatch(createAnecdote(content))
-    dispatch(createNotification(`Note with the Content ${content} was created`))
+    dispatch(
+      createNotification(`Note with the Content '${content}' was created`)
+    )
   }
 
   return (

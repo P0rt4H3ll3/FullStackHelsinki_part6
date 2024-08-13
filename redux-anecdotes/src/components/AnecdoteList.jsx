@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { increaseVote } from '../reducers/anecdoteReducer'
+import { createNotification } from '../reducers/notificationReducer'
 import PropTypes from 'prop-types'
 
 const Anecdote = ({ anecdote, handleClick }) => {
@@ -24,7 +25,10 @@ const AnecdoteList = () => {
       return anecdote.content.toLowerCase().includes(filter.toLowerCase())
     })
   })
-
+  const vote = (anecdote) => {
+    dispatch(increaseVote(anecdote.id))
+    dispatch(createNotification(`you voted ${anecdote.content}`))
+  }
   return (
     [...anecdotes] //sort directly modifies the original array, here the state managed by redux
       // that would be against the principles of immutability in Redux
@@ -33,7 +37,7 @@ const AnecdoteList = () => {
         <Anecdote
           key={anecdote.id}
           anecdote={anecdote}
-          handleClick={() => dispatch(increaseVote(anecdote.id))}
+          handleClick={() => vote(anecdote)}
         />
       ))
   )

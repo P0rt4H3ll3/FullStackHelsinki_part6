@@ -17,6 +17,12 @@ const AnecdoteForm = () => {
         type: 'SET_NOTIFICATION',
         payload: `Note with the Content '${newAnecdote.content}' was created`
       })
+    },
+    onError: (error) => {
+      notificationDispatch({
+        type: 'SET_NOTIFICATION',
+        payload: error.response.data.error
+      })
     }
   })
   const onCreate = (event) => {

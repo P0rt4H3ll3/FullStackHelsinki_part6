@@ -20,7 +20,7 @@ export const { createNotification, removeNotification } =
 
 export const setNotification = (notification, time) => {
   //Thunk
-  //Instead of returning an action object, createNotification returns a function that takes dispatch as an argument. This makes it a thunk. Redux Thunk middleware allows this pattern, enabling you to perform side effects (like delayed dispatches) within your action creators.
+  //Instead of returning an action object, setNotification returns a function that takes dispatch as an argument. This makes it a thunk. Redux Thunk middleware allows this pattern, enabling you to perform side effects (like delayed dispatches) within your action creators.
   //
   return async (dispatch) => {
     dispatch(createNotification(notification))
